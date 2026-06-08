@@ -251,9 +251,11 @@ else:
             orientation="h",
             yanchor="bottom",
             y=1.02,
-            xanchor="right",
-            x=1
-        )
+            xanchor="left",
+            x=0
+        ),
+        xaxis_title=None,
+        yaxis_title=None
     )
     st.plotly_chart(fig_line, use_container_width=True)
 
@@ -278,8 +280,8 @@ else:
             orientation="h",
             yanchor="bottom",
             y=1.02,
-            xanchor="right",
-            x=1
+            xanchor="left",
+            x=0
         )
     )
     st.plotly_chart(fig_bar, use_container_width=True)
