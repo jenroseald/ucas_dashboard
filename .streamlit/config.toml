@@ -1,1 +1,4 @@
+Ini, TOML
 
+[client]
+toolbarMode = "viewer"
