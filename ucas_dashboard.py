@@ -304,6 +304,12 @@ else:
         mime="text/csv"
     )
 
+    # Text statement directly underneath
+    st.caption(
+    "🔓 **Data License & Usage:** This dataset is compiled from open data sources "
+    "already in the public domain. It is free to download, reuse, and distribute. "
+    "Original data source and attribution: [UCAS 2026 Applicant Cycle](https://www.ucas.com/data-and-analysis/undergraduate-statistics-and-reports/ucas-undergraduate-releases/applicant-releases-for-2026-cycle/2026-cycle-applicant-figures-15-october-deadline)."
+    )
 # Add a final note about the dashboard
 st.markdown("---")
-st.write("*This prototype dashboard contains a limited dataset. Data is current as of the latest update. For any questions or feedback, please contact the developer.*")
+st.write("*Download of data This prototype dashboard contains a limited dataset. Data is current as of the latest update. For any questions or feedback, please contact the developer.*")
