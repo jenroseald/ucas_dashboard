@@ -11,14 +11,13 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-# Set working directory
-desired_directory = r"C:\Users\Michelle\OneDrive\Documents\GitHub\ucas_dashboard"
+# Set working directory to the folder containing this script (works locally and on Streamlit Cloud)
+desired_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(desired_directory)
-print(f"Working directory set to: {os.getcwd()}")
 
 # 1.2 Import dataset
 # Load the UCAS applications data
-df = pd.read_csv(r'C:\Users\Michelle\OneDrive\Documents\GitHub\ucas_dashboard\Reapplication status.csv')
+df = pd.read_csv(os.path.join(desired_directory, 'Reapplication status.csv'))
 
 # 1.3 Clean the data
 # Function to clean the data
