@@ -15,9 +15,6 @@ st.markdown(
     div[data-testid="stToolbar"] {
         display: none !important;
     }
-    div[data-testid="stDecoration"] {
-        display: none !important;
-    }
     .stAppDeployButton {
         display: none !important;
     }
