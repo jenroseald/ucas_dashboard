@@ -266,11 +266,21 @@ else:
     bar_df['Year'] = bar_df['Year'].astype(str)
     fig_bar = px.bar(
         bar_df,
-        x='Year',
-        y='Applicants',
+        x='Applicants',
+        y='Year',
         color=legend_col,
         barmode='group',
+        orientation='h',
         labels={'Applicants': 'Applicants', 'Year': 'Year', legend_col: selected_legend}
+    )
+    fig_bar.update_layout(
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.02,
+            xanchor="right",
+            x=1
+        )
     )
     st.plotly_chart(fig_bar, use_container_width=True)
 
