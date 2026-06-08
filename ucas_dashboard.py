@@ -312,4 +312,4 @@ else:
     )
 # Add a final note about the dashboard
 st.markdown("---")
-st.write("*Download of data This prototype dashboard contains a limited dataset. Data is current as of the latest update. For any questions or feedback, please contact the developer.*")
+st.write("*This is a prototype dashboard and contains a limited dataset. For any questions or feedback, please contact the developer.*")
