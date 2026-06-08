@@ -8,14 +8,25 @@ import os
 import warnings
 warnings.filterwarnings('ignore')
 import streamlit as st
-# Inject custom CSS to hide the top-right toolbar, github icons, and status widget
+# Explicitly ensure the sidebar behavior is healthy
+st.set_page_config(initial_sidebar_state="auto")
+
+# Inject custom CSS targeting ONLY the developer elements
 st.markdown(
     """
     <style>
-    div[data-testid="stToolbar"] {
+    /* Hide the Deploy button */
+    .stAppDeployButton {
         display: none !important;
     }
-    .stAppDeployButton {
+    
+    /* Hide the standard developer menu options (Fork, Edit, etc.) */
+    div[data-testid="stManageAppButton"] {
+        display: none !important;
+    }
+    
+    /* Specifically hide the GitHub icon/link container if it appears */
+    #tabs-bnd3-tab-1, .viewerBadge_v1, div[data-testid="stToolbarActions"] {
         display: none !important;
     }
     </style>
