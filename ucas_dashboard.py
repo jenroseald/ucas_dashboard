@@ -303,3 +303,7 @@ else:
         file_name=f"ucas_applications_by_{selected_legend.lower().replace(' ', '_')}.csv",
         mime="text/csv"
     )
+
+# Add a final note about the dashboard
+st.markdown("---")
+st.write("*This prototype dashboard contains a limited dataset. Data is current as of the latest update. For any questions or feedback, please contact the developer.*")
