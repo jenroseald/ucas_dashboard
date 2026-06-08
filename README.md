@@ -1,12 +1,12 @@
 # UCAS Applications Dashboard
 
-An interactive data dashboard built with Python and Streamlit, exploring trends in UK university applications using publicly available UCAS data.
+An interactive data dashboard built with Python, Streamlit and Plotly, exploring trends in UK university applications using publicly available UCAS data.
 
 ---
 
 ## Overview
 
-This dashboard visualises UCAS undergraduate application data, allowing users to explore how application volumes have changed over time across different student characteristics including age group, gender, and domicile (country of origin).
+This dashboard visualises UCAS application data, allowing users to explore how application volumes have changed over time across different student characteristics including age group, gender, and domicile (country of origin).
 
 **Data source:** [UCAS Undergraduate Statistics and Reports](https://www.ucas.com/data-and-analysis/undergraduate-statistics-and-reports)
 
