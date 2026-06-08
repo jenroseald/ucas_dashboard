@@ -156,7 +156,7 @@ df = df[~df['Year'].isin([2017, 2018, 2019, 2020])]
 # 3. Create Streamlit dashboard and visualisations
 
 # Set the title of the dashboard
-st.write("*Using a mobile device? Click the arrow in the top left to open chartfilters.*")
+st.write("*Using a mobile device? Click the arrow in the top left to filter charts.*")
 st.title("UCAS Dashboard")
 st.write("This dashboard explores recent UK university application trends. Use the dropdown menu to view applications by student age, gender, and domicile (country the student applied from)).")
 st.write("Use the filters to explore your findings.")
@@ -245,6 +245,15 @@ else:
         chart_df,
         markers=True,
         labels={'value': 'Applicants', 'index': 'Year', 'variable': selected_legend}
+    )
+    fig_line.update_layout(
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.02,
+            xanchor="right",
+            x=1
+        )
     )
     st.plotly_chart(fig_line, use_container_width=True)
 
