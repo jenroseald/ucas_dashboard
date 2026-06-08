@@ -156,6 +156,7 @@ df = df[~df['Year'].isin([2017, 2018, 2019, 2020])]
 # 3. Create Streamlit dashboard and visualisations
 
 # Set the title of the dashboard
+st.write("*Using a mobile device? Click the arrow in the top left to open chartfilters.*")
 st.title("UCAS Dashboard")
 st.write("This dashboard explores recent UK university application trends. Use the dropdown menu to view applications by student age, gender, and domicile (country the student applied from)).")
 st.write("Use the filters to explore your findings.")
