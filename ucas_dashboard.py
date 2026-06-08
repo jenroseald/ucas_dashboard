@@ -8,6 +8,23 @@ import os
 import warnings
 warnings.filterwarnings('ignore')
 import streamlit as st
+# Inject custom CSS to hide the top-right toolbar, github icons, and status widget
+st.markdown(
+    """
+    <style>
+    div[data-testid="stToolbar"] {
+        display: none !important;
+    }
+    div[data-testid="stDecoration"] {
+        display: none !important;
+    }
+    .stAppDeployButton {
+        display: none !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 import pandas as pd
 import numpy as np
 import plotly.express as px
