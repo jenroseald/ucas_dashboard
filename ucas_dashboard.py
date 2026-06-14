@@ -259,7 +259,8 @@ else:
             x=0
         ),
         xaxis_title=None,
-        yaxis_title=None
+        yaxis_title=None,
+        xaxis_type='category'
     )
     st.plotly_chart(fig_line, use_container_width=True)
 
@@ -286,7 +287,8 @@ else:
             y=1.02,
             xanchor="left",
             x=0
-        )
+        ),
+        yaxis_type='category'
     )
     st.plotly_chart(fig_bar, use_container_width=True)
 
