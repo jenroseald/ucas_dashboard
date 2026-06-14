@@ -52,12 +52,13 @@ def clean_data(df):
     1. Strip whitespace and remove line breaks from column names, and convert them to title case.
     2. Ensure 'Applicants' column is numeric, coercing errors to NaN.
     3. Convert the 'Year' column to an integer year (e.g. 2018) for use in Streamlit visualisations.
-    4. Drop rows that contain the value 'All' in any column.
-    5. Convert non-numeric values to title case for consistency and visual appeal.
-    6. If a string value equals the word 'And', convert it to lowercase
-    7. If a string value contains 'Uk', replace with 'UK'
-    8. If a string value contains 'Eu', replace with 'EU'
-    9. Drop rows that contain null or missing values.
+    4. Drop rows where 'Year' is before 2023.
+    5. Drop rows that contain the value 'All' in any column.
+    6. Convert non-numeric values to title case for consistency and visual appeal.
+    7. If a string value equals the word 'And', convert it to lowercase
+    8. If a string value contains 'Uk', replace with 'UK'
+    9. If a string value contains 'Eu', replace with 'EU'
+    10. Drop rows that contain null or missing values.
     The function uses try/except statements to catch and print any errors that occur during the cleaning process.
     """
     try:
@@ -76,22 +77,25 @@ def clean_data(df):
         else:
             return None
 
-        # Step 4: Drop rows containing 'All'
+        # Step 4: Drop rows where Year is before 2023
+        df = df[df['Year'] >= 2023]
+
+        # Step 5: Drop rows containing 'All'
         df = df[~df.apply(lambda row: row.astype(str).str.contains('All').any(), axis=1)]
 
-        # Step 5: Convert non-numeric values to title case for consistency and visual appeal
+        # Step 6: Convert non-numeric values to title case for consistency and visual appeal
         df = df.map(lambda x: x.title() if isinstance(x, str) else x)
 
-        # Step 6: Convert 'And' to lowercase
+        # Step 7: Convert 'And' to lowercase
         df = df.map(lambda x: x.replace('And', 'and') if isinstance(x, str) else x)
 
-        # Step 7: Replace 'Uk' with 'UK' anywhere in a string (e.g. 'Rest Of Uk' -> 'Rest Of UK')
+        # Step 8: Replace 'Uk' with 'UK' anywhere in a string (e.g. 'Rest Of Uk' -> 'Rest Of UK')
         df = df.map(lambda x: x.replace('Uk', 'UK') if isinstance(x, str) else x)
 
-        # Step 8: Replace 'Eu' with 'EU' anywhere in a string (e.g. 'Other Eu' -> 'Other EU')
+        # Step 9: Replace 'Eu' with 'EU' anywhere in a string (e.g. 'Other Eu' -> 'Other EU')
         df = df.map(lambda x: x.replace('Eu', 'EU') if isinstance(x, str) else x)
         
-        # Step 9: Drop rows with null or missing values
+        # Step 10: Drop rows with null or missing values
         df = df.dropna()
         
         return df
