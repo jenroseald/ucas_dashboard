@@ -11,8 +11,8 @@
 
 This dashboard presents UK university application trends from 2023, 2024 and 2025, drawn from UCAS (the Universities and Colleges Admissions Service) annual applicant data. It allows users to explore how the number of applicants has changed over time, broken down by:
 
-- **Age group** (e.g. 17–18, 19–20, 25–29, 35 and over)
-- **Gender** (Male, Female, Other)
+- **Age group** (17 and under, 18, 19, 20, 21 - 24, 25 - 29, 30 - 34, 35 and over)
+- **Gender** (Male, Female, I prefer not to day, I use another term)
 - **Domicile** (the country the student applied from, e.g. England, Scotland, EU, Non-EU)
 
 The dashboard is designed to be used by junior government officials to present data stories to professional data journalists and members of the public. No data science knowledge is required to use it.
@@ -27,81 +27,13 @@ This guide is written for **junior government officials** who need to open, use,
 
 ## Part 1: Accessing the Dashboard
 
-### Option A — Use the Live Web Version (Recommended)
-
-The easiest way to use the dashboard is via its public web address:
+The dashboard is available via its public web address:
 
 **[https://mjhalpin.streamlit.app](https://mjhalpin.streamlit.app)**
 
 Simply open this link in any modern web browser (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari). No login, installation or download is required.
 
 > **Note:** The dashboard may take up to 30 seconds to load on first visit if it has been inactive. This is normal — simply wait for it to appear.
-
----
-
-### Option B — Run It Locally on Your Own Computer
-
-If you need to run the dashboard on your own machine (for example, to update the data), follow these steps carefully.
-
-#### Step 1 — Check You Have Python Installed
-
-1. Open the **Command Prompt** (Windows) or **Terminal** (Mac/Linux).
-2. Type the following and press Enter:
-
-```
-python --version
-```
-
-3. If you see a version number beginning with **3.9 or higher** (e.g. `Python 3.11.4`), you are ready. If not, download Python from [https://www.python.org/downloads/](https://www.python.org/downloads/) and install it. During installation, tick the box that says **"Add Python to PATH"**.
-
----
-
-#### Step 2 — Download the Dashboard Files
-
-The dashboard files are stored in a GitHub repository. To download them:
-
-1. Go to the GitHub repository link provided to you by the developer.
-2. Click the green **"Code"** button, then click **"Download ZIP"**.
-3. Save the ZIP file to your computer and extract (unzip) it to a location you can easily find, such as your Desktop or Documents folder.
-
-The extracted folder will contain at minimum:
-- `ucas_dashboard.py` — the dashboard application
-- `Reapplication status.csv` — the data file
-- `requirements.txt` — the list of software the dashboard needs
-
----
-
-#### Step 3 — Install the Required Software
-
-1. Open **Command Prompt** (Windows) or **Terminal** (Mac/Linux).
-2. Navigate to the folder where you extracted the files. For example, if you saved it to your Desktop in a folder called `ucas_dashboard`, type:
-
-```
-cd Desktop/ucas_dashboard
-```
-
-3. Install the required software by typing the following and pressing Enter:
-
-```
-pip install -r requirements.txt
-```
-
-4. Wait for the installation to complete. This may take a few minutes.
-
----
-
-#### Step 4 — Launch the Dashboard
-
-1. In the same Command Prompt or Terminal window, type:
-
-```
-streamlit run ucas_dashboard.py
-```
-
-2. Press Enter. The dashboard will open automatically in your default web browser.
-3. The address bar will show something like `http://localhost:8501` — this means the dashboard is running on your own computer.
-
-> To stop the dashboard, return to the Command Prompt or Terminal window and press **Ctrl + C**.
 
 ---
 
@@ -161,7 +93,7 @@ Clicking this will save the currently displayed data as a spreadsheet file (`.cs
 
 > The downloaded file will only contain the data currently visible based on your filter selections.
 
-> This data is sourced from UCAS open public data and is free to reuse and share with attribution to the original source.
+> This data is sourced from UCAS open public data and is free to reuse and share with attribution to the original source. Contact the developer to request alternative accessible formats.
 
 ---
 
@@ -169,11 +101,11 @@ Clicking this will save the currently displayed data as a spreadsheet file (`.cs
 
 > **This section is for authorised staff only.** Members of the public and journalists do not need to update the data.
 
-The dashboard reads data from a file called `Reapplication status.csv`. To update the dashboard with new UCAS data:
+The dashboard data is stored securely in Google Cloud Storage (GCS). When a new UCAS dataset is available each year, authorised staff can update the dashboard by uploading the new data file directly to the GCS bucket. No coding or technical knowledge is required.
 
 ### What You Will Need
 - The updated CSV file downloaded from [UCAS Data and Analysis](https://www.ucas.com/data-and-analysis)
-- Access to the GitHub repository for this project
+- Authorised access to the Google Cloud Storage bucket for this project (provided by the developer)
 
 ### Important: The CSV Must Follow This Structure
 
@@ -184,7 +116,7 @@ The CSV file **must** contain the following columns with these exact names (spel
 | `Year` | 2023, 2024, 2025 |
 | `Applicants` | 45320 |
 | `Age Group` | 17, 18–19, 20–21, 25–29, 35 and Over |
-| `Gender` | Man, Woman, Other |
+| `Gender` | Man, Woman, I prefer not to say, I use another term |
 | `Domicile` | England, Scotland, Wales, Northern Ireland, Other EU, Non-EU |
 | `Reapplicant Status` | First time applicant, Reapplicant |
 
@@ -193,8 +125,13 @@ The CSV file **must** contain the following columns with these exact names (spel
 ### Steps to Update
 
 1. Save your new CSV file using the exact filename: `Reapplication status.csv`
-2. Upload the file to the GitHub repository, replacing the existing file
-3. The live dashboard at [https://mjhalpin.streamlit.app](https://mjhalpin.streamlit.app) will automatically update within a few minutes
+2. Log in to the [Google Cloud Console](https://console.cloud.google.com) using your authorised account
+3. Navigate to **Cloud Storage** and open the bucket provided to you by the developer
+4. Click **Upload files** and select your new `Reapplication status.csv` file
+5. Confirm the upload — the existing file will be replaced
+6. The live dashboard at [https://mjhalpin.streamlit.app](https://mjhalpin.streamlit.app) will automatically reflect the updated data within a few minutes
+
+> If you do not have access to the Google Cloud Storage bucket, contact the developer to request access before proceeding.
 
 ---
 
@@ -207,7 +144,7 @@ The CSV file **must** contain the following columns with these exact names (spel
 | Filters are not visible | On mobile, tap the arrow (›) in the top-left to open the sidebar |
 | Charts show "No data matches the selected filters" | You have deselected all filter options — tick at least one to restore the chart |
 | The download button does not work | Try a different browser (Chrome or Edge recommended) |
-| The local version will not start | Ensure Python 3.9+ is installed and `pip install -r requirements.txt` completed without errors |
+| Data does not appear to have updated after upload | Wait a few minutes and refresh the page; if the problem persists, contact the developer |
 
 ---
 
@@ -219,11 +156,11 @@ The CSV file **must** contain the following columns with these exact names (spel
 | Framework | Streamlit |
 | Key libraries | Pandas, Plotly Express, NumPy |
 | Hosting | Streamlit Community Cloud (free tier) |
-| Source control | GitHub |
+| Data storage | Google Cloud Storage (secure, access-controlled) |
 | Data file | CSV (comma-separated values) |
 | Browser support | Chrome, Edge, Firefox, Safari (latest versions) |
 | Mobile support | Yes — responsive layout, sidebar collapses on small screens |
-| Authentication | None (public access) |
+| Authentication | None for viewers (public access); GCS access controlled by service account |
 | Data export | CSV download (filtered view only) |
 
 ---
@@ -253,4 +190,4 @@ This dataset is compiled from open data sources already in the public domain. It
 
 ---
 
-*README version 1.0 | June 2026*
+*README version 1.1 | June 2026*
