@@ -8,7 +8,7 @@ import os
 import warnings
 warnings.filterwarnings('ignore')
 import streamlit as st
-# Explicitly ensure the sidebar behavior is healthy
+# Explicitly ensure the sidebar behaves as expected on mobile devices by setting the initial state to "auto"
 st.set_page_config(initial_sidebar_state="auto")
 
 # Inject custom CSS targeting ONLY the developer elements
@@ -154,8 +154,8 @@ if df is None:
     st.error("Failed to create categories. Please check the CSV file and try again.")
     st.stop()
 
-# 2. To meet assignment requirements, remove records where the year is 2017, 2018, 2019 or 2020.
-df = df[~df['Year'].isin([2017, 2018, 2019, 2020])]
+# 2. To meet assignment requirements, remove records where the year is before 2023.
+df = df[~df['Year'].isin([2017, 2018, 2019, 2020, 2021, 2022])]
 
 # 3. Create Streamlit dashboard and visualisations
 
