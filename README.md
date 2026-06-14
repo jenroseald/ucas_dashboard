@@ -1,112 +1,256 @@
-# UCAS Applications Dashboard
+# UCAS Dashboard — User README
 
-An interactive data dashboard built with Python, Streamlit and Plotly, exploring trends in UK university applications using publicly available UCAS data.
-
----
-
-## Overview
-
-This dashboard visualises UCAS application data, allowing users to explore how application volumes have changed over time across different student characteristics including age group, gender, and domicile (country of origin).
-
-**Data source:** [UCAS Undergraduate Statistics and Reports](https://www.ucas.com/data-and-analysis/undergraduate-statistics-and-reports)
+**Product name:** UCAS Applicant Trends Dashboard  
+**Version:** 1.0 (Prototype)  
+**Access:** [https://mjhalpin.streamlit.app](https://mjhalpin.streamlit.app)  
+**Data source:** [UCAS 2026 Cycle Applicant Figures — 15 October Deadline](https://www.ucas.com/data-and-analysis/undergraduate-statistics-and-reports/ucas-undergraduate-releases/applicant-releases-for-2026-cycle/2026-cycle-applicant-figures-15-october-deadline)
 
 ---
 
-## Features
+## What This Dashboard Does
 
-- **KPI summary cards** — total applicants, latest year total, and year-on-year percentage change
-- **Interactive line chart** — applicant trends over time, coloured by selected metric
-- **Bar chart** — year-on-year grouped comparison by selected metric
-- **Dynamic filters** — sub-filters update based on the selected metric (e.g. filter by Maturity when viewing Age Group)
-- **Data table** — formatted view of the aggregated data
-- **CSV export** — download the filtered table as a CSV file
+This dashboard presents UK university application trends from 2023, 2024 and 2025, drawn from UCAS (the Universities and Colleges Admissions Service) annual applicant data. It allows users to explore how the number of applicants has changed over time, broken down by:
+
+- **Age group** (e.g. 17–18, 19–20, 25–29, 35 and over)
+- **Gender** (Male, Female, Other)
+- **Domicile** (the country the student applied from, e.g. England, Scotland, EU, Non-EU)
+
+The dashboard is designed to be used by junior government officials to present data stories to professional data journalists and members of the public. No data science knowledge is required to use it.
 
 ---
 
-## Project Structure
+## Who This README Is For
+
+This guide is written for **junior government officials** who need to open, use, and share the dashboard. No coding or technical knowledge is needed.
+
+---
+
+## Part 1: Accessing the Dashboard
+
+### Option A — Use the Live Web Version (Recommended)
+
+The easiest way to use the dashboard is via its public web address:
+
+**[https://mjhalpin.streamlit.app](https://mjhalpin.streamlit.app)**
+
+Simply open this link in any modern web browser (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari). No login, installation or download is required.
+
+> **Note:** The dashboard may take up to 30 seconds to load on first visit if it has been inactive. This is normal — simply wait for it to appear.
+
+---
+
+### Option B — Run It Locally on Your Own Computer
+
+If you need to run the dashboard on your own machine (for example, to update the data), follow these steps carefully.
+
+#### Step 1 — Check You Have Python Installed
+
+1. Open the **Command Prompt** (Windows) or **Terminal** (Mac/Linux).
+2. Type the following and press Enter:
 
 ```
-ucas_dashboard/
-│
-├── ucas_dashboard.py          # Main Streamlit dashboard application
-├── Reapplication status.csv   # Source data (UCAS applications)
-├── requirements.txt           # Python package dependencies
-└── README.md                  # Project documentation
+python --version
 ```
 
----
-
-## Getting Started
-
-### Prerequisites
-
-- Python 3.9 or higher
-- Git
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/<your-username>/ucas_dashboard.git
-   cd ucas_dashboard
-   ```
-
-2. **Create and activate a virtual environment**
-   ```bash
-   python -m venv .venv
-   ```
-   - On Windows:
-     ```bash
-     .venv\Scripts\activate
-     ```
-   - On Mac/Linux:
-     ```bash
-     source .venv/bin/activate
-     ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run the dashboard**
-   ```bash
-   streamlit run ucas_dashboard.py
-   ```
-
-   The dashboard will open automatically in your browser at `http://localhost:8501`.
+3. If you see a version number beginning with **3.9 or higher** (e.g. `Python 3.11.4`), you are ready. If not, download Python from [https://www.python.org/downloads/](https://www.python.org/downloads/) and install it. During installation, tick the box that says **"Add Python to PATH"**.
 
 ---
 
-## Dependencies
+#### Step 2 — Download the Dashboard Files
 
-| Package    | Purpose                          |
-|------------|----------------------------------|
-| Streamlit  | Web dashboard framework          |
-| Pandas     | Data loading, cleaning, analysis |
-| NumPy      | Numerical operations             |
-| Plotly     | Interactive charts               |
+The dashboard files are stored in a GitHub repository. To download them:
 
----
+1. Go to the GitHub repository link provided to you by the developer.
+2. Click the green **"Code"** button, then click **"Download ZIP"**.
+3. Save the ZIP file to your computer and extract (unzip) it to a location you can easily find, such as your Desktop or Documents folder.
 
-## Data
-
-The dataset contains UCAS undergraduate application records with the following fields:
-
-| Column               | Description                                      |
-|----------------------|--------------------------------------------------|
-| Year                 | Application year                                 |
-| Reapplication Status | Whether the applicant is a first-timer or reapplier |
-| Age Group            | Age band of the applicant                        |
-| Gender               | Gender of the applicant                          |
-| Domicile             | Country/region the applicant applied from        |
-| Applicants           | Number of applicants                             |
-
-**Note:** Records prior to 2021 and rows containing aggregate totals (marked 'All') are excluded from the dashboard.
+The extracted folder will contain at minimum:
+- `ucas_dashboard.py` — the dashboard application
+- `Reapplication status.csv` — the data file
+- `requirements.txt` — the list of software the dashboard needs
 
 ---
 
-## Acknowledgements
+#### Step 3 — Install the Required Software
 
-- Data provided by [UCAS](https://www.ucas.com)
-- Built using [Streamlit](https://streamlit.io), [Plotly](https://plotly.com/python/), and [Pandas](https://pandas.pydata.org/)
+1. Open **Command Prompt** (Windows) or **Terminal** (Mac/Linux).
+2. Navigate to the folder where you extracted the files. For example, if you saved it to your Desktop in a folder called `ucas_dashboard`, type:
+
+```
+cd Desktop/ucas_dashboard
+```
+
+3. Install the required software by typing the following and pressing Enter:
+
+```
+pip install -r requirements.txt
+```
+
+4. Wait for the installation to complete. This may take a few minutes.
+
+---
+
+#### Step 4 — Launch the Dashboard
+
+1. In the same Command Prompt or Terminal window, type:
+
+```
+streamlit run ucas_dashboard.py
+```
+
+2. Press Enter. The dashboard will open automatically in your default web browser.
+3. The address bar will show something like `http://localhost:8501` — this means the dashboard is running on your own computer.
+
+> To stop the dashboard, return to the Command Prompt or Terminal window and press **Ctrl + C**.
+
+---
+
+## Part 2: Using the Dashboard
+
+### The Main Screen
+
+When the dashboard loads, you will see:
+
+- A **title** and brief description at the top
+- Three **summary figures** (KPI cards) showing total applicants, the most recent year's total, and the year-on-year percentage change
+- A **line chart** showing applicant trends over time
+- A **bar chart** showing a side-by-side year comparison
+- A **data table** at the bottom with a download button
+
+---
+
+### The Filter Panel (Sidebar)
+
+On the left-hand side of the screen, there is a filter panel.
+
+> **On a mobile device:** The filter panel is hidden by default. Tap the **arrow (›)** in the top-left corner of the screen to open it.
+
+The filter panel has two parts:
+
+**1. Choose a Metric**
+Use the dropdown at the top to choose how you want to break down the charts:
+- **Age Group** — splits data by applicant age ranges
+- **Gender** — splits data by Male, Female, or Other
+- **Domicile** — splits data by where the applicant applied from
+
+**2. Filter Your Chart**
+Once you have chosen a metric, a filter appears below it. Use this to show or hide specific categories. For example, if you chose "Gender", you can tick or untick Male, Female, and Other to include or exclude them from the charts.
+
+All charts and summary figures update automatically when you change a filter.
+
+---
+
+### Reading the Charts
+
+**Line chart — Trend Over Time**
+Shows how applicant numbers changed across 2023, 2024 and 2025 for each category. Hover your mouse over any point on the line to see the exact figure.
+
+**Bar chart — Year-on-Year Comparison**
+Shows the same data as horizontal bars, grouped by year, making it easier to compare categories side by side.
+
+**Data table**
+Shows the underlying numbers behind the charts. You can scroll left and right if there are many columns.
+
+---
+
+### Downloading the Data
+
+At the bottom of the page, beneath the data table, there is a **"Download table as CSV"** button.
+
+Clicking this will save the currently displayed data as a spreadsheet file (`.csv`) that can be opened in Microsoft Excel or similar software.
+
+> The downloaded file will only contain the data currently visible based on your filter selections.
+
+> This data is sourced from UCAS open public data and is free to reuse and share with attribution to the original source.
+
+---
+
+## Part 3: Updating the Data
+
+> **This section is for authorised staff only.** Members of the public and journalists do not need to update the data.
+
+The dashboard reads data from a file called `Reapplication status.csv`. To update the dashboard with new UCAS data:
+
+### What You Will Need
+- The updated CSV file downloaded from [UCAS Data and Analysis](https://www.ucas.com/data-and-analysis)
+- Access to the GitHub repository for this project
+
+### Important: The CSV Must Follow This Structure
+
+The CSV file **must** contain the following columns with these exact names (spelling and capitalisation matter):
+
+| Column name | Example values |
+|---|---|
+| `Year` | 2023, 2024, 2025 |
+| `Applicants` | 45320 |
+| `Age Group` | 17, 18–19, 20–21, 25–29, 35 and Over |
+| `Gender` | Man, Woman, Other |
+| `Domicile` | England, Scotland, Wales, Northern Ireland, Other EU, Non-EU |
+| `Reapplicant Status` | First time applicant, Reapplicant |
+
+> If the column names or values differ from the above, the dashboard may display an error. Contact the developer if this occurs.
+
+### Steps to Update
+
+1. Save your new CSV file using the exact filename: `Reapplication status.csv`
+2. Upload the file to the GitHub repository, replacing the existing file
+3. The live dashboard at [https://mjhalpin.streamlit.app](https://mjhalpin.streamlit.app) will automatically update within a few minutes
+
+---
+
+## Part 4: Troubleshooting
+
+| Problem | What to do |
+|---|---|
+| The dashboard is blank or shows a loading spinner | Wait up to 30 seconds and refresh the page |
+| "Data cleaning failed" error message | Check that the CSV file matches the column structure in Part 3 |
+| Filters are not visible | On mobile, tap the arrow (›) in the top-left to open the sidebar |
+| Charts show "No data matches the selected filters" | You have deselected all filter options — tick at least one to restore the chart |
+| The download button does not work | Try a different browser (Chrome or Edge recommended) |
+| The local version will not start | Ensure Python 3.9+ is installed and `pip install -r requirements.txt` completed without errors |
+
+---
+
+## Part 5: Technical Information for IT Staff
+
+| Item | Detail |
+|---|---|
+| Language | Python 3.9+ |
+| Framework | Streamlit |
+| Key libraries | Pandas, Plotly Express, NumPy |
+| Hosting | Streamlit Community Cloud (free tier) |
+| Source control | GitHub |
+| Data file | CSV (comma-separated values) |
+| Browser support | Chrome, Edge, Firefox, Safari (latest versions) |
+| Mobile support | Yes — responsive layout, sidebar collapses on small screens |
+| Authentication | None (public access) |
+| Data export | CSV download (filtered view only) |
+
+---
+
+## Accessibility
+
+This dashboard has been designed with accessibility in mind:
+
+- Charts include hover tooltips for screen reader support
+- Colour schemes have been reviewed against WCAG 2.1 accessibility guidelines
+- The layout stacks vertically on mobile devices for ease of reading
+- No specialist software or plugins are required to access the dashboard
+
+---
+
+## Contact and Support
+
+This is a **prototype dashboard**. For questions, feedback or data update requests, please contact the developer.
+
+---
+
+## Data Attribution
+
+Data source: UCAS (2026) *2026 cycle applicant figures — 15 October deadline*. Available at: https://www.ucas.com
+
+This dataset is compiled from open data sources already in the public domain. It is free to download, reuse and distribute with attribution to the original source.
+
+---
+
+*README version 1.0 | June 2026*
