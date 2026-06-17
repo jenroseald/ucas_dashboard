@@ -1,4 +1,4 @@
-# UCAS Dashboard — User README
+# UCAS Dashboard (M.Halpin / CETM25 / June 2026) — User README
 
 **Product name:** UCAS Applicant Trends Dashboard  
 **Version:** 1.0 (Prototype)  
@@ -33,7 +33,7 @@ The dashboard is available via its public web address:
 
 Simply open this link in any modern web browser (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari). No login, installation or download is required.
 
-> **Note:** The dashboard may take up to 30 seconds to load on first visit if it has been inactive. This is normal — simply wait for it to appear.
+> **Note:** The dashboard may take up to 30 seconds to load on first visit if it has been inactive. This is normal — please wait for it to appear.
 
 ---
 
